@@ -1,6 +1,6 @@
-# Bank Account Management System
+# Journal App
 
-This is a MERN-based Bank Account Management System.
+This is a MERN-based Journal App.
 
 ## Requirements
 
