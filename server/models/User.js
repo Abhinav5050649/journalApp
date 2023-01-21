@@ -14,10 +14,6 @@ const userSchema = new Schema({
     password: {
         type:   String,
         required: true
-    },
-    accBalance: {
-        type: String,
-        default: 0.00
     }
 });
 
