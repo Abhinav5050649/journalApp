@@ -1,5 +1,6 @@
 import noteContext from `./noteContext`;
 import React, {useState} from "react";
+import axios from 'axios';
 
 const noteState = (props) => {
     const notesInitial = [];
@@ -13,13 +14,12 @@ const noteState = (props) => {
                 "auth-token":       localStorage.getItem('token'),
             },
         });
-
         const json = await response.json();
         setNotes(json);
     };
 
     //Post Note
-    const addNote = async(title, description, tag) => {
+    const addNote = async(title, description) => {
         const response = await fetch(`api/notes/addEntries`, {
             method: "POST", 
             headers: {
@@ -27,7 +27,7 @@ const noteState = (props) => {
                 "auth-token":
                 localStorage.getItem('token'),
             },
-            body: JSON.stringify({title, description, tag}),
+            body: JSON.stringify({title, description}),
         });
 
         const json = await response.json();
@@ -53,7 +53,7 @@ const noteState = (props) => {
         setNotes(newNotes);
     };
 
-    const editNote = async(id, title, description, tag) => {
+    const editNote = async(id, title, description) => {
         const response = await fetch(`/api/notes/updateEntry/${id}`, {
             method: "PUT", 
             headers: {
@@ -61,7 +61,7 @@ const noteState = (props) => {
                 "auth-token":
                 localStorage.getItem('token'),
             },
-            body: JSON.stringify({title, description, tag}),
+            body: JSON.stringify({title, description}),
         });
         const json = await response.json();
         console.log(json);
@@ -83,13 +83,11 @@ const noteState = (props) => {
     };
 
     return (
-        <>
         <noteContext.Provider
-        value=({notes, addNote, deleteNote, editNote, getNotes })
+          value={{ notes, addNote, deleteNote, editNote, getNotes }}
         >
-        {props.children}
+          {props.children}
         </noteContext.Provider>
-        </>
     );
 };
 
