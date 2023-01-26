@@ -1,6 +1,6 @@
 import React from "react";
 
-import {entries} from "./Entries";
+import {Entries} from "./Entries";
 
 export const Home = () => {
     return (
