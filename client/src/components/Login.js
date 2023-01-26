@@ -31,7 +31,7 @@ export const Login = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} method="post"> 
+            <form onSubmit={handleSubmit}> 
                 <div className="form-group">
                     <label>Email Address</label>
                     <input type="email" className="form-control" name="email" value={credentials.email} onChange={onChange} id="textFormControlInput1" required={true}></input>
